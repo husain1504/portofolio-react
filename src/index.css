@@ -53,11 +53,16 @@ body {
   min-height: 100vh;
   text-align: left;
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* --- TAMBAHAN INI UNTUK MENGATASI SCROLL HORIZONTAL --- */
+  overflow-x: hidden; 
 }
 
 #root {
   min-height: 100vh;
   width: 100%;
+  /* Opsional: Tambahkan overflow-x: hidden di sini juga jika body tidak cukup */
+  /* overflow-x: hidden; */ 
 }
 
 /* Typography */
@@ -201,6 +206,45 @@ html.dark-mode ::-webkit-scrollbar-thumb:hover {
   border: 0;
 }
 
-/* 3. HAPUS BLOK @media (prefers-color-scheme: light) { ... }
-   yang ada di file Anda sebelumnya.
-*/
+
+/* --- PRELOADER (VERSI SEMULA) --- */
+
+/* Full-screen overlay */
+.preloader {
+  position: fixed;
+  inset: 0; 
+  background-color: var(--bg-primary); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  opacity: 1;
+  transition: opacity 0.5s ease-out; 
+}
+
+/* Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--border); 
+  border-top-color: var(--accent); 
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Class untuk menyembunyikan preloader */
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none; 
+}
+/* --- AKHIR PRELOADER --- */
+
