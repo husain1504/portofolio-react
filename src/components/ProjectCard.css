@@ -1,0 +1,95 @@
+.project-card {
+  /* Gunakan variabel dari index.css */
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden; /* Penting agar gambar tidak keluar */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Efek hover yang mulus */
+  transition: all 0.3s ease;
+}
+
+/* Efek hover yang interaktif */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent);
+}
+
+/* Selector untuk light mode (spesifik) */
+html.light-mode .project-card:hover {
+  box-shadow: 0 10px 20px rgba(79, 90, 203, 0.15);
+}
+
+/* Selector untuk dark mode (spesifik) */
+html.dark-mode .project-card:hover {
+  box-shadow: 0 10px 20px rgba(100, 108, 255, 0.2);
+}
+
+.card-link-wrapper {
+  text-decoration: none;
+  color: inherit; /* Mewarisi warna dari parent */
+  display: block;
+  height: 100%;
+}
+
+.card-image-container {
+  width: 100%;
+  height: 200px; /* Tinggi gambar tetap */
+  overflow: hidden;
+  background-color: var(--border);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Gambar akan menutupi area tanpa distorsi */
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-image {
+  transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  /* Batasi deskripsi hanya 3 baris */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.card-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  border-radius: 20px;
+}

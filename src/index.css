@@ -1,0 +1,206 @@
+/* src/index.css */
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color-scheme: light dark;
+  
+  /* 1. LIGHT MODE variables (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(0, 0, 0, 0.65);
+  --accent: #4f5acb;
+  --accent-hover: #3d47a8;
+  --border: rgba(0, 0, 0, 0.1);
+  
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. DARK MODE variables (di-trigger oleh class 'dark-mode' pada <html>) */
+html.dark-mode {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --accent: #646cff;
+  --accent-hover: #535bf2;
+  --border: rgba(255, 255, 255, 0.1);
+  
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  text-align: left;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.4rem); }
+h3 { font-size: clamp(1.25rem, 3vw, 1.8rem); }
+p { margin: 0; color: var(--text-secondary); line-height: 1.7; }
+
+/* Links */
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--accent-hover); }
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Button styling */
+button {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+button:active { transform: translateY(0); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* Light Mode Button (default) */
+button:hover {
+  border-color: var(--accent);
+  background: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 90, 203, 0.15);
+}
+
+/* Dark Mode Button */
+html.dark-mode button {
+  background: var(--bg-secondary);
+}
+html.dark-mode button:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(100, 108, 255, 0.2);
+}
+
+/* Input & Form elements */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.75em 1em;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+/* Light Mode Scrollbar (default) */
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+/* Dark Mode Scrollbar */
+html.dark-mode ::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border: 2px solid var(--bg-primary);
+}
+html.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #2a2a2a;
+}
+
+/* Selection color */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 3. HAPUS BLOK @media (prefers-color-scheme: light) { ... }
+   yang ada di file Anda sebelumnya.
+*/
